@@ -26,7 +26,7 @@ public static class ConsoleColors {
         // (int, int, int) hsv = ()
         
         void action() {
-            (int r, int g, int b) c = ColorFormat.ColorFromHSV(DateTime.Now.Second * 180 + 100, 1, 1);
+            (int r, int g, int b) c = ColorFormat.RgbFromHsv(DateTime.Now.Second * 180 + 100, 1, 1);
             DigitalClock.COLOR = (c.r << 16) + (c.g << 8) + c.b;
         }
         
