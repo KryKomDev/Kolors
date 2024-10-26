@@ -58,7 +58,7 @@ public static class Debug {
     /// <param name="hideTime">hides time if true</param>
     public static void Error(string s, bool hideTime = false) {
         if (level >= DebugLevel.ONLY_ERRORS) 
-            ConsoleColors.PrintColored(hideTime ? $"ERROR: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] ERROR: {s}\n", errorColor);
+            ConsoleColors.PrintColored(hideTime ? $"\x1B[1mERROR: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] ERROR: {s}\n", errorColor);
     }
 
     /// <summary>
