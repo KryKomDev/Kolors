@@ -1,5 +1,5 @@
 //
-// Kolors
+// Kolors - Colored Console Utils
 // by KryKom 2024
 //
 
@@ -9,11 +9,27 @@ namespace Kolors;
 /// debug console utils 
 /// </summary>
 public static class Debug {
+    private static int warnColor { get; set; } = ColorPalette.COLORS.colors[1];
 
-    public static int warnColor { get; set; } = ColorPalette.COLORS.colors[1];
-    public static int errorColor { get; set; } = ColorPalette.COLORS.colors[0];
-    public static int infoColor { get; set; } = ColorPalette.COLORS.colors[2];
+    public static int WarnColor {
+        get => warnColor;
+        set => warnColor = value;
+    }
+    
+    private static int errorColor { get; set; } = ColorPalette.COLORS.colors[0];
 
+    public static int ErrorColor {
+        get => errorColor;
+        set => errorColor = value;
+    }
+    
+    private static int infoColor { get; set; } = ColorPalette.COLORS.colors[2];
+
+    public static int InfoColor {
+        get => infoColor;
+        set => infoColor = value;
+    }
+    
     /// <summary>
     /// what will be shown in the console <br/>
     /// 0 - nothing <br/>
@@ -21,13 +37,18 @@ public static class Debug {
     /// 2 - error + warn <br/>
     /// 3 - error + warn + info <br/>
     /// </summary>
-    public static DebugLevel debugLevel { get; set; } = DebugLevel.ERRORS_WARNS;
+    private static DebugLevel level { get; set; } = DebugLevel.ERRORS_WARNS;
+
+    public static DebugLevel Level {
+        get => level;
+        set => level = value;
+    }
     
     public enum DebugLevel {
         NOTHING = 0,
         ONLY_ERRORS = 1,
         ERRORS_WARNS = 2,
-        ALL = 3,
+        ALL = 3
     }
     
     /// <summary>
@@ -35,9 +56,9 @@ public static class Debug {
     /// </summary>
     /// <param name="s">desired string message</param>
     /// <param name="hideTime">hides time if true</param>
-    public static void error(string s, bool hideTime = false) {
-        if (debugLevel >= DebugLevel.ONLY_ERRORS) 
-            ConsoleColors.printColored(hideTime ? $"ERROR: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] ERROR: {s}\n", errorColor);
+    public static void Error(string s, bool hideTime = false) {
+        if (level >= DebugLevel.ONLY_ERRORS) 
+            ConsoleColors.PrintColored(hideTime ? $"ERROR: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] ERROR: {s}\n", errorColor);
     }
 
     /// <summary>
@@ -45,9 +66,9 @@ public static class Debug {
     /// </summary>
     /// <param name="s">desired string message</param>
     /// <param name="hideTime">hides time if true</param>
-    public static void warn(string s, bool hideTime = false) {
-        if (debugLevel >= DebugLevel.ERRORS_WARNS) 
-            ConsoleColors.printColored(hideTime ? $"WARN: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] WARN: {s}\n", warnColor);
+    public static void Warn(string s, bool hideTime = false) {
+        if (level >= DebugLevel.ERRORS_WARNS) 
+            ConsoleColors.PrintColored(hideTime ? $"WARN: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] WARN: {s}\n", warnColor);
     }
     
     /// <summary>
@@ -55,8 +76,8 @@ public static class Debug {
     /// </summary>
     /// <param name="s">desired string message</param>
     /// <param name="hideTime">hides time if true</param>
-    public static void info(string s, bool hideTime = false) {
-        if (debugLevel >= DebugLevel.ALL) 
-            ConsoleColors.printColored(hideTime ? $"INFO: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] INFO: {s}\n", infoColor);
+    public static void Info(string s, bool hideTime = false) {
+        if (level >= DebugLevel.ALL) 
+            ConsoleColors.PrintColored(hideTime ? $"INFO: {s}\n" : $"[{DateTime.Now:HH:mm:ss}] INFO: {s}\n", infoColor);
     }
 }

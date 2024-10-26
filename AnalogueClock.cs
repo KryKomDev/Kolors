@@ -1,3 +1,8 @@
+//
+// Kolors - Colored Console Utils
+// by KryKom 2024
+//
+
 using System.Timers;
 
 namespace Kolors;
@@ -47,7 +52,7 @@ public static class AnalogueClock {
     public const int TESTH = 3;
     public const int TESTM = 37;
     
-    private static void setHours() {
+    private static void SetHours() {
         double angle = 30f * DateTime.Now.Hour - 90;
         
         for (int i = 1; i <= HOUR_LENGTH; i++) {
@@ -58,7 +63,7 @@ public static class AnalogueClock {
         }
     }
     
-    private static void setMinutes() {
+    private static void SetMinutes() {
         double angle = 6f * DateTime.Now.Minute - 90;
         
         for (int i = 1; i <= MINUTE_LENGTH; i++) {
@@ -74,7 +79,7 @@ public static class AnalogueClock {
         // WORKING[y, x] = 3;
     }
     
-    private static void setSeconds() {
+    private static void SetSeconds() {
         double angle = 6f * DateTime.Now.Second - 90;
         
         for (int i = 1; i <= SECOND_LENGTH; i++) {
@@ -90,12 +95,12 @@ public static class AnalogueClock {
         // WORKING[y, x] = 4;
     }
 
-    public static void clock(ColorPalette colors) {
+    public static void Start(ColorPalette colors) {
         COLORS = colors;
         
         var timer = new System.Timers.Timer();
         timer.Interval = 1000; // Interval in milliseconds (1 second)
-        timer.Elapsed += updateClock!;
+        timer.Elapsed += UpdateClock!;
         timer.Start();
 
         // Keep the program running
@@ -108,7 +113,7 @@ public static class AnalogueClock {
         }
     }
 
-    private static void updateClock(object sender, ElapsedEventArgs e) {
+    private static void UpdateClock(object sender, ElapsedEventArgs e) {
 
         WORKING = new int[SIZE, SIZE];
         
@@ -118,9 +123,9 @@ public static class AnalogueClock {
             }
         }
 
-        setSeconds();
-        setMinutes();
-        setHours();
+        SetSeconds();
+        SetMinutes();
+        SetHours();
         WORKING[7, 7] = 1;
         Console.Clear();
 
@@ -140,17 +145,17 @@ public static class AnalogueClock {
             
             for (int j = 0; j < SIZE; j++) {
                 if (WORKING[i, j] == 1) {
-                    ConsoleColors.printColoredB("  ", COLORS.colors[4]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.colors[4]);
                 } 
                 else if (WORKING[i, j] == 2) {
-                    ConsoleColors.printColoredB("  ", COLORS.colors[3]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.colors[3]);
                 }
                     
                 else if (WORKING[i, j] == 3) {
-                    ConsoleColors.printColoredB("  ", COLORS.colors[2]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.colors[2]);
                 } 
                 else if (WORKING[i, j] == 4) {
-                    ConsoleColors.printColoredB("  ", COLORS.colors[1]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.colors[1]);
 
                 }
                 else {

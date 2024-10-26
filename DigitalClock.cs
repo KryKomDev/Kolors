@@ -1,3 +1,8 @@
+//
+// Kolors - Colored Console Utils
+// by KryKom 2024
+//
+
 using System.Timers;
 
 namespace Kolors;
@@ -18,7 +23,7 @@ public class DigitalClock {
     public static int COLOR = 0;
     private static Action? ON_UPDATE = null;
     
-    public static void printNumber(int number, int color) {
+    public static void PrintNumber(int number, int color) {
         string[] o = new string[5];
         string s = number.ToString();
 
@@ -67,7 +72,7 @@ public class DigitalClock {
         foreach (var str in o) {
             foreach (var c in str) {
                 if (c == '█') {
-                    ConsoleColors.printColoredB(" ", color);
+                    ConsoleColors.PrintColoredB(" ", color);
                 }
                 else {
                     Console.Write(" ");
@@ -78,14 +83,14 @@ public class DigitalClock {
         }
     }
 
-    public static void clock(int color) {
+    public static void Start(int color) {
 
         COLOR = color;
         ON_UPDATE = null;
         
         var timer = new System.Timers.Timer();
         timer.Interval = 1000; // Interval in milliseconds (1 second)
-        timer.Elapsed += printTime;
+        timer.Elapsed += PrintTime;
         timer.Start();
 
         // Keep the program running
@@ -98,14 +103,14 @@ public class DigitalClock {
         }
     }
     
-    public static void clock(int color, Action onUpdate) {
+    public static void Start(int color, Action onUpdate) {
         
         COLOR = color;
         ON_UPDATE = onUpdate;
         
         var timer = new System.Timers.Timer();
         timer.Interval = 1000; // Interval in milliseconds (1 second)
-        timer.Elapsed += printTime;
+        timer.Elapsed += PrintTime;
         timer.Start();
 
         // Keep the program running
@@ -118,7 +123,7 @@ public class DigitalClock {
         }
     }
 
-    public static void printTime(object sender, ElapsedEventArgs e) {
+    public static void PrintTime(object sender, ElapsedEventArgs e) {
         
         int hours = DateTime.Now.Hour;
         int minutes = DateTime.Now.Minute;
@@ -157,7 +162,7 @@ public class DigitalClock {
                 o[i] += ZERO[i];
             }
         }
-        addNum(hours, ref o);
+        AddNum(hours, ref o);
 
         for (int i = 0; i < 5; i++) {
             o[i] += SEPARATOR[i];
@@ -168,7 +173,7 @@ public class DigitalClock {
                 o[i] += ZERO[i];
             }
         }
-        addNum(minutes, ref o);
+        AddNum(minutes, ref o);
         
         for (int i = 0; i < 5; i++) {
             o[i] += SEPARATOR[i];
@@ -179,7 +184,7 @@ public class DigitalClock {
                 o[i] += ZERO[i];
             }
         }
-        addNum(seconds, ref o);
+        AddNum(seconds, ref o);
 
         Console.Clear();
         
@@ -188,7 +193,7 @@ public class DigitalClock {
         }
         
         top += "┌────────────────────────────────────────────────────────┐";
-        ConsoleColors.printlnColored(top, COLOR);
+        ConsoleColors.PrintlnColored(top, COLOR);
 
         o[0] += "│";
         o[1] += "│";
@@ -199,10 +204,10 @@ public class DigitalClock {
         foreach (var str in o) {
             foreach (var c in str) {
                 if (c == '█') {
-                    ConsoleColors.printColoredB(" ", COLOR);
+                    ConsoleColors.PrintColoredB(" ", COLOR);
                 }
                 else if (c != ' ') {
-                    ConsoleColors.printColored("" + c, COLOR);
+                    ConsoleColors.PrintColored("" + c, COLOR);
                 }
                 else {
                     Console.Write(" ");
@@ -213,10 +218,10 @@ public class DigitalClock {
         }
 
         bottom += $"└─────────────────── {DateTime.Now:yyyy-MM-dd}  [{DateTime.Now.ToString("ddd").ToUpper()}] ───────────────────┘\n";
-        ConsoleColors.printlnColored(bottom, COLOR);
+        ConsoleColors.PrintlnColored(bottom, COLOR);
     }
 
-    private static void addNum(int number, ref string[] o) {
+    private static void AddNum(int number, ref string[] o) {
         
         string s = number.ToString();
 

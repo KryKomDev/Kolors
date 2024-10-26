@@ -1,13 +1,18 @@
+//
+// Kolors - Colored Console Utils
+// by KryKom 2024
+//
+
 namespace Kolors;
 
 public class VisualConsole {
-    public static void printMap(int?[,] map, bool oneColor) {
+    public static void PrintMap(int?[,] map, bool oneColor) {
         for (int x = 0; x < map.GetLength(0); x++) {
             for (int y = 0; y < map.GetLength(1); y++) {
                 if (map[x, y] is null) Console.Write("   ");
-                else if (map[x, y] == 0) ConsoleColors.printColoredB("   ", 0x000000);
-                else if (oneColor) ConsoleColors.printColoredB("   ", 0xffffff);
-                else ConsoleColors.printColoredB("   ", 
+                else if (map[x, y] == 0) ConsoleColors.PrintColoredB("   ", 0x000000);
+                else if (oneColor) ConsoleColors.PrintColoredB("   ", 0xffffff);
+                else ConsoleColors.PrintColoredB("   ", 
                         ColorFormat.HsvToInt((float)(map[x, y] / 60f)!, 1, 1));
             }
             
@@ -15,13 +20,13 @@ public class VisualConsole {
         }
     }
     
-    public static void printMap(float?[,] map, bool oneColor) {
+    public static void PrintMap(float?[,] map, bool oneColor) {
         for (int x = 0; x < map.GetLength(0); x++) {
             for (int y = 0; y < map.GetLength(1); y++) {
                 if (map[x, y] is null) Console.Write("   ");
-                else if (map[x, y] == 0) ConsoleColors.printColoredB("   ", 0x000000);
-                else if (oneColor) ConsoleColors.printColoredB("   ", 0xffffff);
-                else ConsoleColors.printColoredB("   ", 
+                else if (map[x, y] == 0) ConsoleColors.PrintColoredB("   ", 0x000000);
+                else if (oneColor) ConsoleColors.PrintColoredB("   ", 0xffffff);
+                else ConsoleColors.PrintColoredB("   ", 
                     ColorFormat.HsvToInt((float)map[x, y]!, 1, 1));
             }
             
@@ -29,7 +34,7 @@ public class VisualConsole {
         }
     }
 
-    public static void printVMap(((int x, int y) a, (int x, int y) b)[] vmap, int xSize, int ySize) {
+    public static void PrintVMap(((int x, int y) a, (int x, int y) b)[] vmap, int xSize, int ySize) {
         char[,] img = new char[xSize, ySize];
         
         foreach (var vert in vmap) {

@@ -1,5 +1,5 @@
 //
-// Kolors
+// Kolors - Colored Console Utils
 // by KryKom 2024
 //
 
