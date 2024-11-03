@@ -4,6 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Kolors</Title>
+        <Authors>KryKom</Authors>
+        <Description>CONSOLE COLORS!!! and some other utilities</Description>
+        <RepositoryUrl>https://github.com/KryKomDev/Kolors</RepositoryUrl>
     </PropertyGroup>
 
 </Project>

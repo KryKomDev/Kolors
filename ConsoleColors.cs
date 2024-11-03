@@ -3,6 +3,8 @@
 // by KryKom 2024
 //
 
+using System.Drawing;
+
 namespace Kolors;
 
 public static class ConsoleColors {
@@ -20,15 +22,18 @@ public static class ConsoleColors {
         // Clock.printNumber(1234567890, 0x5f2c76);
         // DigitalClock.clock(0x5f2c76);
         // AnalogueClock.clock(ColorPalette.COLORS);
-        
+
+        ColorPalette p = ColorPalette.GeneratePalette(113213);
+        p.PrintPalette();
+
         // (int, int, int) hsv = ()
-        
-        void action() {
-            (int r, int g, int b) c = ColorFormat.RgbFromHsv(DateTime.Now.Second * 180 + 100, 1, 1);
-            DigitalClock.COLOR = (c.r << 16) + (c.g << 8) + c.b;
-        }
-        
-        DigitalClock.Start(0xff0000, action);
+        //
+        // void action() {
+        //     (int r, int g, int b) c = ColorFormat.RgbFromHsv(DateTime.Now.Second * 180 + 100, 1, 1);
+        //     DigitalClock.COLOR = (c.r << 16) + (c.g << 8) + c.b;
+        // }
+        //
+        // DigitalClock.Start(0xff0000, action);
     }
     
     /// <summary>

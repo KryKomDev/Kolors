@@ -3,6 +3,8 @@
 // by KryKom 2024
 //
 
+using System.Drawing;
+
 namespace Kolors;
 
 public struct ColorPalette {
@@ -99,5 +101,36 @@ public struct ColorPalette {
             // Console.Write(name);
             p.palette.PrintPalette();
         }
+    }
+
+    public static ColorPalette GeneratePalette(int seed) {
+        ColorPalette palette = new ColorPalette {
+            colors = new int[10]
+        };
+
+        Random rnd = new Random(seed);
+        
+        var A = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
+        var B = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
+        var C = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
+        var D = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
+
+        for (int i = 0; i < 10; i++) {
+            Color c = GenerateColorAtX(A, B, C, D, (float)i / 10);
+            palette.colors[i] = c.R << 16 | c.G << 8 | c.B;
+        }
+        
+        return palette;
+    }
+
+    public static Color GenerateColorAtX((float R, float G, float B) A, (float R, float G, float B) B,
+        (float R, float G, float B) C, (float R, float G, float B) D, float x) 
+    {
+        Color result = Color.FromArgb(
+            (byte)((A.R + B.R * Math.Cos(2 * Math.PI * (C.R * x + D.R))) * 255),
+            (byte)((A.G + B.G * Math.Cos(2 * Math.PI * (C.G * x + D.G))) * 255),
+            (byte)((A.B + B.B * Math.Cos(2 * Math.PI * (C.B * x + D.B))) * 255));
+        
+        return result;
     }
 }

@@ -12,5 +12,6 @@ Global
 		{17688DB3-6431-47CA-826D-EA0B7E471522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17688DB3-6431-47CA-826D-EA0B7E471522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17688DB3-6431-47CA-826D-EA0B7E471522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17688DB3-6431-47CA-826D-EA0B7E471522}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
