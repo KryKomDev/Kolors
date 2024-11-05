@@ -47,7 +47,7 @@ public static class AnalogueClock {
     private const int HOUR_LENGTH = 3;
     private const int MINUTE_LENGTH = 4;
     private const int SECOND_LENGTH = 6;
-    public static ColorPalette COLORS;
+    public static ColorPalette COLORS = ColorPalette.LAVENDER;
 
     public const int TESTH = 3;
     public const int TESTM = 37;
@@ -95,6 +95,9 @@ public static class AnalogueClock {
         // WORKING[y, x] = 4;
     }
 
+    /// <summary>
+    /// starts an analogue clock in the console
+    /// </summary>
     public static void Start(ColorPalette colors) {
         COLORS = colors;
         
@@ -105,7 +108,7 @@ public static class AnalogueClock {
 
         // Keep the program running
         Console.WriteLine("Press Enter to exit...");
-        string s = Console.ReadLine();
+        string? s = Console.ReadLine();
 
         if (s == "") {
             timer.Stop();
@@ -145,17 +148,17 @@ public static class AnalogueClock {
             
             for (int j = 0; j < SIZE; j++) {
                 if (WORKING[i, j] == 1) {
-                    ConsoleColors.PrintColoredB("  ", COLORS.colors[4]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.Colors[4]);
                 } 
                 else if (WORKING[i, j] == 2) {
-                    ConsoleColors.PrintColoredB("  ", COLORS.colors[3]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.Colors[3]);
                 }
                     
                 else if (WORKING[i, j] == 3) {
-                    ConsoleColors.PrintColoredB("  ", COLORS.colors[2]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.Colors[2]);
                 } 
                 else if (WORKING[i, j] == 4) {
-                    ConsoleColors.PrintColoredB("  ", COLORS.colors[1]);
+                    ConsoleColors.PrintColoredB("  ", COLORS.Colors[1]);
 
                 }
                 else {

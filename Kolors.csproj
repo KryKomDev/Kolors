@@ -9,6 +9,16 @@
         <Authors>KryKom</Authors>
         <Description>CONSOLE COLORS!!! and some other utilities</Description>
         <RepositoryUrl>https://github.com/KryKomDev/Kolors</RepositoryUrl>
+        <PackageId>kolors</PackageId>
+        <Version>1.0.5</Version>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
 
 </Project>

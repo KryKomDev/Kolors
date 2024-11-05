@@ -83,6 +83,11 @@ public class DigitalClock {
         }
     }
 
+    
+    /// <summary>
+    /// starts a new digital clock in the console
+    /// </summary>
+    /// <param name="color"></param>
     public static void Start(int color) {
 
         COLOR = color;
@@ -90,12 +95,14 @@ public class DigitalClock {
         
         var timer = new System.Timers.Timer();
         timer.Interval = 1000; // Interval in milliseconds (1 second)
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
         timer.Elapsed += PrintTime;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
         timer.Start();
 
         // Keep the program running
         Console.WriteLine("Press Enter to exit...");
-        string s = Console.ReadLine();
+        string? s = Console.ReadLine();
 
         if (s == "") {
             timer.Stop();
@@ -110,12 +117,14 @@ public class DigitalClock {
         
         var timer = new System.Timers.Timer();
         timer.Interval = 1000; // Interval in milliseconds (1 second)
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
         timer.Elapsed += PrintTime;
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
         timer.Start();
 
         // Keep the program running
         Console.WriteLine("Press Enter to exit...");
-        string s = Console.ReadLine();
+        string? s = Console.ReadLine();
 
         if (s == "") {
             timer.Stop();
@@ -123,7 +132,7 @@ public class DigitalClock {
         }
     }
 
-    public static void PrintTime(object sender, ElapsedEventArgs e) {
+    private static void PrintTime(object sender, ElapsedEventArgs e) {
         
         int hours = DateTime.Now.Hour;
         int minutes = DateTime.Now.Minute;

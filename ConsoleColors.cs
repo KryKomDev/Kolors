@@ -3,38 +3,9 @@
 // by KryKom 2024
 //
 
-using System.Drawing;
-
 namespace Kolors;
 
 public static class ConsoleColors {
-
-    public static void Main() {
-        // ColorPalette.NONE.printPalette();
-        // ColorPalette.COLORS.printPalette();
-        // ColorPalette.printAllPalettes();
-        Debug.Error("cus");
-        Debug.Warn("cus");
-        Debug.Info("cus");
-        
-        // Console.WriteLine(Clock.TWO);
-        // Console.WriteLine(Clock.SIX);
-        // Clock.printNumber(1234567890, 0x5f2c76);
-        // DigitalClock.clock(0x5f2c76);
-        // AnalogueClock.clock(ColorPalette.COLORS);
-
-        ColorPalette p = ColorPalette.GeneratePalette(113213);
-        p.PrintPalette();
-
-        // (int, int, int) hsv = ()
-        //
-        // void action() {
-        //     (int r, int g, int b) c = ColorFormat.RgbFromHsv(DateTime.Now.Second * 180 + 100, 1, 1);
-        //     DigitalClock.COLOR = (c.r << 16) + (c.g << 8) + c.b;
-        // }
-        //
-        // DigitalClock.Start(0xff0000, action);
-    }
     
     /// <summary>
     /// prints a colored string in the console without newline
@@ -46,13 +17,24 @@ public static class ConsoleColors {
     }
 
     /// <summary>
-    /// TODO summary
+    /// prints a string with its characters colored using string symbols
     /// </summary>
-    /// <param name="s"></param>
-    /// <param name="colors"></param>
-    public static void PrintComplexColored(string s, (string replaced, int hex)[] colors) {
+    /// <param name="s">source string</param>
+    /// <param name="colors">
+    /// tuple of symbol string and hexadecimal color representation,
+    /// with which will the symbol be replaced,
+    /// if a color is -1 the colors will be reset
+    /// </param>
+    public static void PrintComplexColored(string s, (string symbol, int hex)[] colors) {
         foreach (var c in colors) {
-            s = s.Replace(c.replaced, $"\x1b[38;2;{(byte)(c.hex >> 16)};{(byte)(c.hex >> 8)};{(byte)c.hex}m");
+            
+            // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
+            if (c.hex == -1) {
+                s = s.Replace(c.symbol, "\x1b[0m");
+            }
+            else {
+                s = s.Replace(c.symbol, $"\x1b[38;2;{(byte)(c.hex >> 16)};{(byte)(c.hex >> 8)};{(byte)c.hex}m");
+            }
         }
         
         Console.Write(s);
@@ -68,10 +50,14 @@ public static class ConsoleColors {
     }
     
     /// <summary>
-    /// TODO summary
+    /// prints a string with its background colored using string symbols
     /// </summary>
-    /// <param name="s"></param>
-    /// <param name="colors"></param>
+    /// <param name="s">source string</param>
+    /// <param name="colors">
+    /// tuple of symbol string and hexadecimal color representation,
+    /// with which will the symbol be replaced,
+    /// if a color is -1 the colors will be reset
+    /// </param>
     public static void PrintlnComplexColored(string s, (string replaced, int hex)[] colors) {
         foreach (var c in colors) {
             s = s.Replace(c.replaced, $"\x1b[38;2;{(byte)(c.hex >> 16)};{(byte)(c.hex >> 8)};{(byte)c.hex}m");

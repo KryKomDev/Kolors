@@ -9,21 +9,21 @@ namespace Kolors;
 /// debug console utils 
 /// </summary>
 public static class Debug {
-    private static int warnColor { get; set; } = ColorPalette.COLORS.colors[1];
+    private static int warnColor { get; set; } = ColorPalette.COLORS.Colors[1];
 
     public static int WarnColor {
         get => warnColor;
         set => warnColor = value;
     }
     
-    private static int errorColor { get; set; } = ColorPalette.COLORS.colors[0];
+    private static int errorColor { get; set; } = ColorPalette.COLORS.Colors[0];
 
     public static int ErrorColor {
         get => errorColor;
         set => errorColor = value;
     }
     
-    private static int infoColor { get; set; } = ColorPalette.COLORS.colors[2];
+    private static int infoColor { get; set; } = ColorPalette.COLORS.Colors[2];
 
     public static int InfoColor {
         get => infoColor;
@@ -45,9 +45,24 @@ public static class Debug {
     }
     
     public enum DebugLevel {
+        /// <summary>
+        /// no debug messages will be shown
+        /// </summary>
         NOTHING = 0,
+        
+        /// <summary>
+        /// only error messages will be shown
+        /// </summary>
         ONLY_ERRORS = 1,
+        
+        /// <summary>
+        /// error and warning messages will be shown
+        /// </summary>
         ERRORS_WARNS = 2,
+        
+        /// <summary>
+        /// all debug messages will be shown
+        /// </summary>
         ALL = 3
     }
     

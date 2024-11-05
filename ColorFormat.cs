@@ -1,5 +1,5 @@
 //
-// Kolors - Colored Console Utils
+// Kolors - Color Utils
 // by KryKom 2024
 //
 
@@ -8,6 +8,10 @@ using System.Drawing;
 namespace Kolors;
 
 public class ColorFormat {
+    
+    /// <summary>
+    /// returns the hue, saturation and value of the supplied color 
+    /// </summary>
     public static void ColorToHsv(Color color, out double hue, out double saturation, out double value) {
         int max = Math.Max(color.R, Math.Max(color.G, color.B));
         int min = Math.Min(color.R, Math.Min(color.G, color.B));
@@ -17,6 +21,17 @@ public class ColorFormat {
         value = max / 255d;
     }
 
+    /// <summary>
+    /// returns the hue, saturation and value of the supplied color 
+    /// </summary>
+    public static (double h, double s, double v) ColorToHsv(Color color) {
+        ColorToHsv(color, out double h, out double s, out double v);
+        return (h, s, v);
+    }
+
+    /// <summary>
+    /// returns the rgb value of the color of supplied hsv values 
+    /// </summary>
     public static (int r, int g, int b) RgbFromHsv(double hue, double saturation, double value) {
         int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
         double f = hue / 60 - Math.Floor(hue / 60);
@@ -35,6 +50,9 @@ public class ColorFormat {
         else return (v, p, q);
     }
     
+    /// <summary>
+    /// creates an instance of <see cref="Color"/> from the hsv values
+    /// </summary>
     public static Color ColorFromHsv(double hue, double saturation, double value) {
         int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
         double f = hue / 60 - Math.Floor(hue / 60);
@@ -53,11 +71,11 @@ public class ColorFormat {
         else return Color.FromArgb(v, p, q);
     }
     
+    /// <summary>
+    /// turns hsv values into an rgb int
+    /// </summary>
     public static int HsvToInt(float h, float s, float v){
-        // Convert HSV to RGB
         (int r, int g, int b) c = RgbFromHsv(h, s, v);
-
-        // Convert RGB to HEX
         return c.r << 16 | c.g << 8 | c.b;
     }
 }
