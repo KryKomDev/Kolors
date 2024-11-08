@@ -10,7 +10,7 @@
         <Description>CONSOLE COLORS!!! and some other utilities</Description>
         <RepositoryUrl>https://github.com/KryKomDev/Kolors</RepositoryUrl>
         <PackageId>kolors</PackageId>
-        <Version>1.0.5</Version>
+        <Version>1.0.6.1</Version>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
