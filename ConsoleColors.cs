@@ -6,6 +6,14 @@
 namespace Kolors;
 
 public static class ConsoleColors {
+
+    public static void Main() {
+        for (int i = 0; i < 100; i++) {
+            ColorPalette cp = ColorPalette.GeneratePalette(i, 100);
+            cp.PrintPalette(color => PrintColoredB(" ", color));
+            Console.WriteLine();
+        }
+    }
     
     /// <summary>
     /// prints a colored string in the console without newline

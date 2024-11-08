@@ -116,6 +116,18 @@ public class ColorPalette {
         
         Console.Write("\n");
     }
+
+    /// <summary>
+    /// uses a custom action to print a palette 
+    /// </summary>
+    /// <param name="print">print delegate that prints a single color</param>
+    public void PrintPalette(Action<int> print) {
+        foreach (var c in colors) {
+            print(c);
+        }
+        
+        Console.Write("\n");
+    }
     
     /// <summary>
     /// prints all registered palettes
@@ -161,8 +173,8 @@ public class ColorPalette {
     /// returns the color located at X in a graph of <c>color = A + B * Cos(2 * PI * (Cx + D))</c>
     /// where A, B, C and D are 3d vectors representing a color (all their values should be between 1 and 0)
     /// </summary>
-    public static Color GenerateColorAtX((float R, float G, float B) A, (float R, float G, float B) B,
-        (float R, float G, float B) C, (float R, float G, float B) D, float x) 
+    public static Color GenerateColorAtX((double R, double G, double B) A, (double R, double G, double B) B,
+        (double R, double G, double B) C, (double R, double G, double B) D, double x) 
     {
         Color result = Color.FromArgb(
             (byte)((A.R + B.R * Math.Cos(2 * Math.PI * (C.R * x + D.R))) * 255),
