@@ -138,8 +138,9 @@ public class ColorPalette {
     /// generates a new random visually pleasing palette 
     /// </summary>
     /// <param name="seed">seed for random</param>
-    public static ColorPalette GeneratePalette(int seed) {
-        ColorPalette palette = new ColorPalette(new int[10]);
+    /// <param name="colorCount">how many colors will the palette contain</param>
+    public static ColorPalette GeneratePalette(int seed, int colorCount = 10) {
+        ColorPalette palette = new ColorPalette(new int[colorCount]);
 
         Random rnd = new Random(seed);
         
@@ -148,8 +149,8 @@ public class ColorPalette {
         var C = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
         var D = (rnd.NextSingle(), rnd.NextSingle(), rnd.NextSingle());
 
-        for (int i = 0; i < 10; i++) {
-            Color c = GenerateColorAtX(A, B, C, D, (float)i / 10);
+        for (int i = 0; i < colorCount; i++) {
+            Color c = GenerateColorAtX(A, B, C, D, (float)i / colorCount);
             palette.colors[i] = c.R << 16 | c.G << 8 | c.B;
         }
         
