@@ -5,7 +5,7 @@
 
 using System.Timers;
 
-namespace Kolors;
+namespace Kolors.console;
 
 public class DigitalClock {
     public static readonly string[] ZERO = [" ██████ " , " ██  ██ " , " ██  ██ " , " ██  ██ " , " ██████ "];

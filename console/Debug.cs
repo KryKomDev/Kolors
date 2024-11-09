@@ -3,7 +3,7 @@
 // by KryKom 2024
 //
 
-namespace Kolors;
+namespace Kolors.console;
 
 /// <summary>
 /// debug console utils 

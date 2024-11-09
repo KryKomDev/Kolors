@@ -3,7 +3,7 @@
 // by KryKom 2024
 //
 
-namespace Kolors;
+namespace Kolors.console;
 
 public static class ConsoleColors {
 

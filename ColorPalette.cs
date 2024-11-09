@@ -4,6 +4,7 @@
 //
 
 using System.Drawing;
+using Kolors.console;
 
 namespace Kolors;
 

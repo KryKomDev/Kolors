@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Kolors;
 
-public class ColorFormat {
+public static class ColorFormat {
     
     /// <summary>
     /// returns the hue, saturation and value of the supplied color 

@@ -5,7 +5,7 @@
 
 using System.Timers;
 
-namespace Kolors;
+namespace Kolors.console;
 
 public static class AnalogueClock {
     private const string CIRCLE = "          ██████████          \n" +

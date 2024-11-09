@@ -3,7 +3,7 @@
 // by KryKom 2024
 //
 
-namespace Kolors;
+namespace Kolors.console;
 
 public class VisualConsole {
     public static void PrintMap(int?[,] map, bool oneColor) {
