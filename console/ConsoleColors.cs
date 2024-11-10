@@ -33,7 +33,7 @@ public static class ConsoleColors {
     /// with which will the symbol be replaced,
     /// if a color is -1 the colors will be reset
     /// </param>
-    public static void PrintComplexColored(string s, (string symbol, int hex)[] colors) {
+    public static void PrintComplexColored(string s, params (string symbol, int hex)[] colors) {
         foreach (var c in colors) {
             
             // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
@@ -66,7 +66,7 @@ public static class ConsoleColors {
     /// with which will the symbol be replaced,
     /// if a color is -1 the colors will be reset
     /// </param>
-    public static void PrintlnComplexColored(string s, (string replaced, int hex)[] colors) {
+    public static void PrintlnComplexColored(string s, params (string replaced, int hex)[] colors) {
         foreach (var c in colors) {
             s = s.Replace(c.replaced, $"\x1b[38;2;{(byte)(c.hex >> 16)};{(byte)(c.hex >> 8)};{(byte)c.hex}m");
         }

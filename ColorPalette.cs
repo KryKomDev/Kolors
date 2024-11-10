@@ -40,17 +40,19 @@ public class ColorPalette {
 
     public static readonly ColorPalette NONE = Register("none", new ColorPalette("ff0000-ff8800-ffee00-00ff00-0000ff"));
     
+    public int this[int index] => colors[index];
+    
     private int[] colors { get; set; }
     
     /// <summary>
     /// returns the stored color palette as a set of integers, where the bytes mean AARRGGBB
     /// </summary>
     public int[] Colors => colors;
-    
+
     /// <summary>
     /// returns the stored color palette
     /// </summary>
-    public Color[] GetColors => colors.Select(Color.FromArgb).ToArray();
+    public Color[] GetColors => colors.Select(c => Color.FromArgb(c + (0xff << 24))).ToArray();
 
     /// <summary>
     /// creates a new color palette from a set of integers, where the bytes mean AARRGGBB
